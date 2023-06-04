@@ -1,14 +1,17 @@
-import Image from "next/image";
-
-export default function Home() {
+export default function IndexPage() {
   return (
-    <main className=" flex min-h-screen items-center justify-center bg-gray-50 px-16">
-      <div className="relative h-full w-full">
-        <div className="absolute left-40 top-0 h-96 w-96 animate-blob rounded-full bg-purple-300 mix-blend-multiply blur-2xl filter"></div>
-        <div className="absolute bottom-10 left-96 h-96 w-96 animate-oppositeBlob rounded-full bg-yellow-300 mix-blend-multiply blur-2xl filter"></div>
-        <div className="absolute -top-5 right-56 h-96 w-96 animate-blob rounded-full bg-pink-300 mix-blend-multiply blur-2xl filter"></div>
-        <h1 className="flex justify-center text-9xl">KRUTIK PATEL</h1>
+    <section className="flex min-h-screen max-w-full items-center justify-center">
+      <div className="flex flex-col items-center justify-center gap-2">
+        <h1 className="max-w-[980px] text-center	text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
+          Coming Soon!
+          {/* Beautifully designed components <br className="hidden sm:inline" />
+          built with Radix UI and Tailwind CSS. */}
+        </h1>
+        {/* <p className="max-w-[550px] text-center	 text-lg text-muted-foreground">
+            Accessible and customizable components that you can copy and paste
+            into your apps. Free. Open Source. And Next.js 13 Ready.
+          </p> */}
       </div>
-    </main>
-  );
+    </section>
+  )
 }
