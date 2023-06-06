@@ -1,34 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Krutik Patel Personal Portfolio
 
-## Getting Started
+This repository contains the code for my personal portfolio website, showcasing my work and experience. The website is built using Next.js 13, Typescript, and Shadcn/ui.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- **Dark and Light Theme**: The portfolio website supports both dark and light themes, allowing users to switch between them based on their preference.
+- **Github and Twitter Link**: Visitors can easily access my Github and Twitter profiles directly from the portfolio website, enabling them to explore my projects and get in touch with me.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The following technologies were utilized to develop this portfolio website:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Next.js 13: Next.js is a React framework that provides server-side rendering, static site generation, and other performance optimizations.
+- Typescript: Typescript is a typed superset of JavaScript that enhances code quality and improves maintainability.
+- Shadcn/ui: Shadcn/ui is a UI component library that provides ready-to-use and customizable components, enhancing the visual appeal and user experience of the portfolio website.
 
-## Learn More
+## Contact Information
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Email: [example@example.com](mailto:krutikpatel.patel@gmail.com)
+- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/krutik460/)
