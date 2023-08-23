@@ -33,10 +33,7 @@ export default function BlogsPage() {
               </p>
             </div>
           </div>
-          <Link
-            href="blogs/knowledge-nuggets-explorations"
-            className="absolute inset-0"
-          >
+          <Link href="blogs/knowledge-nuggets" className="absolute inset-0">
             <span className="sr-only">View</span>
           </Link>
         </article>
