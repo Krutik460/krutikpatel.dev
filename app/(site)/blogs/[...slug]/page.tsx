@@ -28,7 +28,7 @@ export default async function GuidePage({ params }: BlogPageProps) {
     <div className="container mx-auto flex max-w-5xl  flex-row py-6 lg:py-10">
       <div className="basis-1/4 justify-center py-6 lg:py-10">
         <Link href="/blogs" className={cn(buttonVariants({ variant: "link" }))}>
-          <Icons.chevronLeft className="mr-2 h-8 w-8" />
+          <Icons.chevronLeft className="mr-2 h-8 w-8 text-muted-foreground hover:text-accent-foreground" />
         </Link>
       </div>
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">

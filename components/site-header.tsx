@@ -31,7 +31,7 @@ export default function SiteHeader({ items }: SiteHeaderProps) {
                     key={index}
                     href={item.href}
                     className={cn(
-                      "flex items-center text-sm font-medium text-muted-foreground",
+                      "flex  items-center text-sm font-medium text-muted-foreground hover:text-accent-foreground focus:text-accent-foreground",
                       item.disabled && "cursor-not-allowed opacity-80"
                     )}
                   >
