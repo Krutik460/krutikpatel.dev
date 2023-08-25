@@ -20,6 +20,11 @@ export default defineType({
       },
     }),
     defineField({
+      title: "Featured",
+      name: "featured",
+      type: "boolean",
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "text",
