@@ -25,10 +25,10 @@ export default async function GuidePage({ params }: BlogPageProps) {
   }
 
   return (
-    <div className="container mx-auto flex max-w-5xl  flex-row py-6 lg:py-10">
+    <div className="container mx-auto flex max-w-5xl flex-row py-6 lg:py-10">
       <div className="basis-1/4 justify-center py-6 lg:py-10">
         <Link href="/blogs" className={cn(buttonVariants({ variant: "link" }))}>
-          <Icons.chevronLeft className="mr-2 h-8 w-8 text-muted-foreground hover:text-accent-foreground" />
+          <Icons.chevronLeft className="mr-2 h-5 w-5 text-muted-foreground hover:text-accent-foreground md:h-8 md:w-8" />
         </Link>
       </div>
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
