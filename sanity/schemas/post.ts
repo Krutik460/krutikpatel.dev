@@ -9,6 +9,7 @@ export default defineType({
       name: "title",
       title: "Title",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "slug",
@@ -18,6 +19,25 @@ export default defineType({
         source: "title",
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "publishedAt",
+      title: "Published at",
+      type: "datetime",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "blog",
+      title: "Blog",
+      type: "reference",
+      to: { type: "blog" },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      title: "Link",
+      name: "imageUrl",
+      type: "url",
     }),
     defineField({
       name: "mainImage",
@@ -33,27 +53,19 @@ export default defineType({
           title: "Alternative Text",
         },
       ],
-    }),
-    defineField({
-      title: "Link",
-      name: "imageUrl",
-      type: "url",
-    }),
-    defineField({
-      name: "Blog",
-      title: "Blog",
-      type: "array",
-      of: [{ type: "reference", to: { type: "blog" } }],
-    }),
-    defineField({
-      name: "publishedAt",
-      title: "Published at",
-      type: "datetime",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "body",
       title: "Body",
       type: "blockContent",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "category",
+      title: "Category",
+      type: "array",
+      of: [{ type: "reference", to: { type: "category" } }],
     }),
   ],
 

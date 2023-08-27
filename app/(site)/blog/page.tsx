@@ -10,7 +10,7 @@ export const metadata = {
   description: "This section includes blogs written by Krutik Patel.",
 }
 
-export default async function BlogsPage() {
+export default async function BlogPage() {
   const blogs = await sanityFetch<SanityDocument[]>({ query: blogsQuery })
 
   return (
@@ -36,7 +36,7 @@ export default async function BlogsPage() {
                 </div>
               </div>
               <Link
-                href={"blogs/" + blog.slug.current}
+                href={`blog/${blog.slug.current}`}
                 className="absolute inset-0"
               >
                 <span className="sr-only">View</span>
