@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import { SanityDocument } from "next-sanity"
+import { Blog } from "@/types/sanity"
 import { blogsQuery } from "@/sanity/lib/queries"
 import { sanityFetch } from "@/sanity/lib/sanityFetch"
 import { DocsPageHeader } from "@/components/page-header"
@@ -11,7 +11,7 @@ export const metadata = {
 }
 
 export default async function BlogPage() {
-  const blogs = await sanityFetch<SanityDocument[]>({ query: blogsQuery })
+  const blogs: Blog[] = await sanityFetch<Blog[]>({ query: blogsQuery })
 
   return (
     <div className="py-6 lg:py-10">

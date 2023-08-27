@@ -2,7 +2,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import Image from "next/image"
 
-import { SanityDocument } from "next-sanity"
+import { Blog, Post } from "@/types/sanity"
 import { blogQuery, postsQuery } from "@/sanity/lib/queries"
 import { sanityFetch } from "@/sanity/lib/sanityFetch"
 import { urlForImage } from "@/sanity/lib/image"
@@ -20,18 +20,18 @@ interface BlogPageProps {
 }
 
 export default async function BlogPage({ params }: BlogPageProps) {
-  const blogInfo = await sanityFetch<SanityDocument[]>({
+  const blogInfo: Blog = await sanityFetch<Blog>({
     query: blogQuery,
     params: { slug: params.slug },
   })
-  const posts = await sanityFetch<SanityDocument[]>({
-    query: postsQuery,
-    params: { _id: blogInfo._id },
-  })
-
   if (!blogInfo) {
     return notFound()
   }
+
+  const posts: Post[] = await sanityFetch<Post[]>({
+    query: postsQuery,
+    params: { _id: blogInfo._id },
+  })
 
   return (
     <div>

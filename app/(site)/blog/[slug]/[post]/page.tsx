@@ -7,7 +7,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
 import { postQuery } from "@/sanity/lib/queries"
-import { SanityDocument } from "next-sanity"
+import { Post } from "@/types/sanity"
 import { sanityFetch } from "@/sanity/lib/sanityFetch"
 import { urlForImage } from "@/sanity/lib/image"
 import { PortableText } from "@portabletext/react"
@@ -20,7 +20,7 @@ interface PostPageProps {
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const post = await sanityFetch<SanityDocument[]>({
+  const post: Post = await sanityFetch<Post>({
     query: postQuery,
     params: { slug: params.post },
   })
