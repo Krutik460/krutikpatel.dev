@@ -12,6 +12,7 @@ import { sanityFetch } from "@/sanity/lib/sanityFetch"
 import { urlForImage } from "@/sanity/lib/image"
 import { customBlockComponents } from "@/components/portableTextComponent"
 import { PortableText } from "@portabletext/react"
+import { showMainImageBlogsIds, showSideImageBogsIds } from "@/config/blog"
 
 interface PostPageProps {
   params: {
@@ -25,6 +26,7 @@ export default async function PostPage({ params }: PostPageProps) {
     query: postQuery,
     params: { slug: params.post },
   })
+  console.log(post)
 
   if (!post) {
     notFound()
@@ -53,11 +55,6 @@ export default async function PostPage({ params }: PostPageProps) {
         )}
         <h1 className="font-heading mt-2 inline-block text-4xl leading-tight lg:text-5xl">
           {post.title}
-          {post.sourceUrl && (
-            <Link href={post.sourceUrl}>
-              <Icons.link className="mr-2 h-4 w-4" />
-            </Link>
-          )}
         </h1>
         <div className="mt-4 flex space-x-4">
           <Link
@@ -72,7 +69,7 @@ export default async function PostPage({ params }: PostPageProps) {
           </Link>
         </div>
       </div>
-      {post.mainImage && (
+      {post.mainImage && showMainImageBlogsIds.includes(post.blog._ref) && (
         <Image
           src={urlForImage(post.mainImage).url()}
           alt="test"
@@ -81,6 +78,30 @@ export default async function PostPage({ params }: PostPageProps) {
           className="my-8 rounded-md border bg-muted transition-colors"
           priority
         />
+      )}
+      {post.mainImage && showSideImageBogsIds.includes(post.blog._ref) && (
+        <>
+          <hr className="my-8" />
+          <Link
+            href={post.sourceUrl}
+            className="fixed right-8 top-24 hidden xl:inline-flex"
+          >
+            <article className="group relative flex flex-col space-y-2">
+              {post.mainImage && (
+                <Image
+                  src={urlForImage(post.mainImage).url()}
+                  alt=""
+                  width={301}
+                  height={169}
+                  className="rounded-md border bg-muted transition-colors"
+                />
+              )}
+              {post.alt && (
+                <h3 className="text-2xl font-extrabold">{post.alt}</h3>
+              )}
+            </article>
+          </Link>
+        </>
       )}
       <PortableText value={post.body} components={customBlockComponents} />
       <hr className="mt-12" />
