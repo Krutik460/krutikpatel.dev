@@ -36,6 +36,7 @@ export async function sanityFetch<QueryResponse>({
       }),
       next: {
         ...(isDraftMode && { revalidate: 30 }),
+        ...(!isDraftMode && { revalidate: 3600 }),
         tags,
       },
     })
