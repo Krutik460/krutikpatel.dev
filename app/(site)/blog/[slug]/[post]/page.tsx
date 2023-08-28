@@ -79,31 +79,31 @@ export default async function PostPage({ params }: PostPageProps) {
         />
       )}
       {post.mainImage && showSideImageBogsIds.includes(post.blog._ref) && (
-        <>
-          <hr className="my-8" />
-          <Link
-            href={post.sourceUrl}
-            className="fixed right-8 top-24 hidden xl:inline-flex"
-          >
-            <article className="group relative flex flex-col space-y-2">
-              {post.mainImage && (
-                <Image
-                  src={urlForImage(post.mainImage).url()}
-                  alt=""
-                  width={301}
-                  height={169}
-                  className="rounded-md border bg-muted transition-colors"
-                />
-              )}
-              {post.alt && (
-                <h3 className="text-2xl font-extrabold">{post.alt}</h3>
-              )}
-            </article>
-          </Link>
-        </>
+        <hr className="my-8" />
       )}
       <PortableText value={post.body} components={customBlockComponents} />
-      <hr className="mt-12" />
+      <hr className="my-8" />
+      {post.mainImage && showSideImageBogsIds.includes(post.blog._ref) && (
+        <Link
+          href={post.sourceUrl}
+          className="flex xl:fixed xl:right-8 xl:top-24 xl:inline-flex"
+        >
+          <article className="group relative flex items-center space-x-2 xl:h-48 xl:w-[301px] xl:flex-col xl:space-y-2">
+            {post.mainImage && (
+              <Image
+                src={urlForImage(post.mainImage).url()}
+                alt=""
+                width={301}
+                height={169}
+                className="h-28 w-48 rounded-md border bg-muted transition-colors sm:h-48 sm:w-80"
+              />
+            )}
+            {post.alt && (
+              <p className="text-sm font-medium sm:text-base">{post.alt}</p>
+            )}
+          </article>
+        </Link>
+      )}
       <div className="flex justify-center py-6 lg:py-10">
         <Link
           href={`/blogs/${params.slug}`}
