@@ -1,15 +1,16 @@
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
+import { Icons } from "@/components/icons"
 
 import { cn, formatDate } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
 
 import { postQuery } from "@/sanity/lib/queries"
 import { Post } from "@/types/sanity"
 import { sanityFetch } from "@/sanity/lib/sanityFetch"
 import { urlForImage } from "@/sanity/lib/image"
+import { customBlockComponents } from "@/components/portableTextComponent"
 import { PortableText } from "@portabletext/react"
 
 interface PostPageProps {
@@ -52,6 +53,11 @@ export default async function PostPage({ params }: PostPageProps) {
         )}
         <h1 className="font-heading mt-2 inline-block text-4xl leading-tight lg:text-5xl">
           {post.title}
+          {post.sourceUrl && (
+            <Link href={post.sourceUrl}>
+              <Icons.link className="mr-2 h-4 w-4" />
+            </Link>
+          )}
         </h1>
         <div className="mt-4 flex space-x-4">
           <Link
@@ -76,7 +82,7 @@ export default async function PostPage({ params }: PostPageProps) {
           priority
         />
       )}
-      <PortableText value={post.body} />
+      <PortableText value={post.body} components={customBlockComponents} />
       <hr className="mt-12" />
       <div className="flex justify-center py-6 lg:py-10">
         <Link
