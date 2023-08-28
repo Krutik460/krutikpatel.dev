@@ -26,7 +26,6 @@ export default async function PostPage({ params }: PostPageProps) {
     query: postQuery,
     params: { slug: params.post },
   })
-  console.log(post)
 
   if (!post) {
     notFound()
