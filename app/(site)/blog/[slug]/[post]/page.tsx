@@ -106,7 +106,7 @@ export default async function PostPage({ params }: PostPageProps) {
       )}
       <div className="flex justify-center py-6 lg:py-10">
         <Link
-          href={`/blogs/${params.slug}`}
+          href={`/blog/${params.slug}`}
           className={cn(buttonVariants({ variant: "ghost" }))}
         >
           <Icons.chevronLeft className="mr-2 h-4 w-4" />
