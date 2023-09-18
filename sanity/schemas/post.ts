@@ -49,9 +49,9 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "alt",
+      name: "description",
       type: "string",
-      title: "Alternative Text",
+      title: "Description",
     }),
     defineField({
       name: "body",
