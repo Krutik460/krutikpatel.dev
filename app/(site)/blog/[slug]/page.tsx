@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import Image from "next/image"
+import { Metadata } from "next"
 
 import { Blog, Post } from "@/types/sanity"
 import { blogQuery, postsQuery } from "@/sanity/lib/queries"
@@ -16,6 +17,32 @@ import { buttonVariants } from "@/components/ui/button"
 interface BlogPageProps {
   params: {
     slug: string
+  }
+}
+
+async function getBlogFromParams({ params }: BlogPageProps) {
+  const blogInfo: Blog = await sanityFetch<Blog>({
+    query: blogQuery,
+    params: { slug: params.slug },
+  })
+  if (!blogInfo) {
+    return null
+  }
+  return blogInfo
+}
+
+export async function generateMetadata({
+  params,
+}: BlogPageProps): Promise<Metadata> {
+  const blog = await getBlogFromParams({ params })
+
+  if (!blog) {
+    return {}
+  }
+
+  return {
+    title: blog.title,
+    description: blog.description,
   }
 }
 

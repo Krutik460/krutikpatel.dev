@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { Icons } from "@/components/icons"
+import { Metadata } from "next"
 
 import { cn, formatDate } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
@@ -18,6 +19,33 @@ interface PostPageProps {
   params: {
     slug: string
     post: string
+  }
+}
+
+async function getPostFromParams({ params }: PostPageProps) {
+  const post: Post = await sanityFetch<Post>({
+    query: postQuery,
+    params: { slug: params.post },
+  })
+
+  if (!post) {
+    notFound()
+  }
+  return post
+}
+
+export async function generateMetadata({
+  params,
+}: PostPageProps): Promise<Metadata> {
+  const post = await getPostFromParams({ params })
+
+  if (!post) {
+    return {}
+  }
+
+  return {
+    title: post.title,
+    description: post.description,
   }
 }
 
@@ -98,8 +126,10 @@ export default async function PostPage({ params }: PostPageProps) {
                 className="h-28 w-48 rounded-md border bg-muted transition-colors sm:h-48 sm:w-80"
               />
             )}
-            {post.alt && (
-              <p className="text-sm font-medium sm:text-base">{post.alt}</p>
+            {post.description && (
+              <p className="text-sm font-medium sm:text-base">
+                {post.description}
+              </p>
             )}
           </article>
         </Link>

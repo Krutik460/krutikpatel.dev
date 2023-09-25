@@ -21,7 +21,7 @@ export type Post = {
     _ref: string
   }
   mainImage: Image
-  alt: string
+  description: string
   sourceUrl: string
   body: PortableTextBlock[]
 }
