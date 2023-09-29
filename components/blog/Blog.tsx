@@ -1,65 +1,20 @@
 import Link from "next/link"
-import { notFound } from "next/navigation"
 import Image from "next/image"
-import { Metadata } from "next"
 
-import { Blog, Post } from "@/types/sanity"
-import { blogQuery, postsQuery } from "@/sanity/lib/queries"
-import { sanityFetch } from "@/sanity/lib/sanityFetch"
+import { BlogDef, PostDef } from "@/types/sanity"
 import { urlForImage } from "@/sanity/lib/image"
-
-import { Icons } from "@/components/icons"
-import { DocsPageHeader } from "@/components/page-header"
-
 import { cn, formatDate } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/Button"
+import { Icons } from "@/components/Icons"
+import { DocsPageHeader } from "@/components/PageHeader"
 
-interface BlogPageProps {
-  params: {
-    slug: string
-  }
-}
-
-async function getBlogFromParams({ params }: BlogPageProps) {
-  const blogInfo: Blog = await sanityFetch<Blog>({
-    query: blogQuery,
-    params: { slug: params.slug },
-  })
-  if (!blogInfo) {
-    return null
-  }
-  return blogInfo
-}
-
-export async function generateMetadata({
-  params,
-}: BlogPageProps): Promise<Metadata> {
-  const blog = await getBlogFromParams({ params })
-
-  if (!blog) {
-    return {}
-  }
-
-  return {
-    title: blog.title,
-    description: blog.description,
-  }
-}
-
-export default async function BlogPage({ params }: BlogPageProps) {
-  const blogInfo: Blog = await sanityFetch<Blog>({
-    query: blogQuery,
-    params: { slug: params.slug },
-  })
-  if (!blogInfo) {
-    return notFound()
-  }
-
-  const posts: Post[] = await sanityFetch<Post[]>({
-    query: postsQuery,
-    params: { _id: blogInfo._id },
-  })
-
+export function Blog({
+  blogInfo,
+  posts,
+}: {
+  blogInfo: BlogDef
+  posts: PostDef[]
+}) {
   return (
     <div>
       <div className="container mx-auto flex max-w-5xl flex-row py-6 lg:py-10">
@@ -103,7 +58,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 </p>
               )}
               <Link
-                href={`blog/${params.slug}/${post.slug.current}`}
+                href={`blog/${blogInfo.slug.current}/${post.slug.current}`}
                 className="absolute inset-0"
               >
                 <span className="sr-only">View Article</span>

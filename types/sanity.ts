@@ -1,6 +1,6 @@
 import { PortableTextBlock, Image } from "sanity"
 
-export type Blog = {
+export type BlogDef = {
   _id: string
   title: string
   slug: {
@@ -10,7 +10,7 @@ export type Blog = {
   description: string
 }
 
-export type Post = {
+export type PostDef = {
   _id: string
   title: string
   slug: {
@@ -26,7 +26,7 @@ export type Post = {
   body: PortableTextBlock[]
 }
 
-export type Category = {
+export type CategoryDef = {
   _id: string
   title: string
 }
