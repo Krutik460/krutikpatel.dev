@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Blog } from "@/types/sanity"
 import { blogsQuery } from "@/sanity/lib/queries"
 import { sanityFetch } from "@/sanity/lib/sanityFetch"
-import { DocsPageHeader } from "@/components/pageHeader"
+import { DocsPageHeader } from "@/components/PageHeader"
 
 export const metadata = {
   title: "Blogs",

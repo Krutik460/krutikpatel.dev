@@ -1,17 +1,17 @@
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import { Icons } from "@/components/icons"
+import { Icons } from "@/components/Icons"
 import { Metadata } from "next"
 
 import { cn, formatDate } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/Button"
 
 import { postQuery } from "@/sanity/lib/queries"
 import { Post } from "@/types/sanity"
 import { sanityFetch } from "@/sanity/lib/sanityFetch"
 import { urlForImage } from "@/sanity/lib/image"
-import { customBlockComponents } from "@/components/portableTextComponent"
+import { customBlockComponents } from "@/components/blog/PortableTextComponent"
 import { PortableText } from "@portabletext/react"
 import { showMainImageBlogsIds, showSideImageBogsIds } from "@/config/blog"
 

@@ -8,11 +8,11 @@ import { blogQuery, postsQuery } from "@/sanity/lib/queries"
 import { sanityFetch } from "@/sanity/lib/sanityFetch"
 import { urlForImage } from "@/sanity/lib/image"
 
-import { Icons } from "@/components/icons"
-import { DocsPageHeader } from "@/components/pageHeader"
+import { Icons } from "@/components/Icons"
+import { DocsPageHeader } from "@/components/PageHeader"
 
 import { cn, formatDate } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/Button"
 
 interface BlogPageProps {
   params: {

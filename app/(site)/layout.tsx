@@ -5,9 +5,9 @@ import { Analytics } from "@vercel/analytics/react"
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
-import SiteHeader from "@/components/siteHeader"
-import TailwindIndicator from "@/components/tailwindIndicator"
-import ThemeProvider from "@/components/themeProvider"
+import SiteHeader from "@/components/SiteHeader"
+import TailwindIndicator from "@/components/TailwindIndicator"
+import ThemeProvider from "@/components/ThemeProvider"
 
 export const metadata: Metadata = {
   title: {

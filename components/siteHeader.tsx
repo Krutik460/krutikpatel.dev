@@ -4,9 +4,9 @@ import { NavItem } from "@/types/nav"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 
-import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
-import ThemeToggle from "@/components/theme-toggle"
+import { buttonVariants } from "@/components/ui/Button"
+import { Icons } from "@/components/Icons"
+import ThemeToggle from "@/components/ThemeToggle"
 
 interface SiteHeaderProps {
   items?: NavItem[]
