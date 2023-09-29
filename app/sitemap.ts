@@ -1,4 +1,4 @@
-import { Blog, Post } from "@/types/sanity"
+import { BlogDef, PostDef } from "@/types/sanity"
 import { blogsQuery, postsQuery } from "@/sanity/lib/queries"
 import { sanityFetch } from "@/sanity/lib/sanityFetch"
 
@@ -10,7 +10,7 @@ interface PostUrl {
 }
 
 export default async function sitemap() {
-  const blogs: Blog[] = await sanityFetch<Blog[]>({ query: blogsQuery })
+  const blogs: BlogDef[] = await sanityFetch<BlogDef[]>({ query: blogsQuery })
 
   const blogsUrl = blogs.map(({ slug }) => ({
     url: `${URL}/blog/${slug.current}`,
@@ -18,7 +18,7 @@ export default async function sitemap() {
   }))
 
   const postsUrl = blogs.map(async (blog) => {
-    const posts: Post[] = await sanityFetch<Post[]>({
+    const posts: PostDef[] = await sanityFetch<PostDef[]>({
       query: postsQuery,
       params: { _id: blog._id },
     })
