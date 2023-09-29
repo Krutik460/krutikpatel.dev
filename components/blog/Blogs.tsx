@@ -1,9 +1,9 @@
 import Link from "next/link"
 
-import { Blog } from "@/types/sanity"
+import { BlogDef } from "@/types/sanity"
 import { DocsPageHeader } from "@/components/PageHeader"
 
-export function Blogs({ blogs = [] }: { blogs: Blog[] }) {
+export function Blogs({ blogs = [] }: { blogs: BlogDef[] }) {
   return (
     <div className="py-6 lg:py-10">
       {blogs?.length ? (
@@ -26,12 +26,14 @@ export function Blogs({ blogs = [] }: { blogs: Blog[] }) {
                   <p className="text-muted-foreground">{blog.description}</p>
                 </div>
               </div>
-              <Link
-                href={`blog/${blog.slug.current}`}
-                className="absolute inset-0"
-              >
-                <span className="sr-only">View</span>
-              </Link>
+              {blog.slug && (
+                <Link
+                  href={`blog/${blog.slug.current}`}
+                  className="absolute inset-0"
+                >
+                  <span className="sr-only">View</span>
+                </Link>
+              )}
             </article>
           ))}
         </div>

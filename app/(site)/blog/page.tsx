@@ -1,8 +1,7 @@
-import Link from "next/link"
 import { draftMode } from "next/headers"
 
 import { Blogs } from "@/components/blog/Blogs"
-import { Blog } from "@/types/sanity"
+import { BlogDef } from "@/types/sanity"
 import { blogsQuery } from "@/sanity/lib/queries"
 import { sanityFetch, token } from "@/sanity/lib/sanityFetch"
 import PreviewProvider from "@/components/PreviewProvider"
@@ -14,7 +13,7 @@ export const metadata = {
 }
 
 export default async function BlogPage() {
-  const blogs: Blog[] = await sanityFetch<Blog[]>({ query: blogsQuery })
+  const blogs: BlogDef[] = await sanityFetch<BlogDef[]>({ query: blogsQuery })
   const isDraftMode = draftMode().isEnabled
 
   if (isDraftMode && token) {
