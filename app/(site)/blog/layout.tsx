@@ -1,8 +1,8 @@
 import "@/styles/globals.css"
 import { Analytics } from "@vercel/analytics/react"
 
-import TailwindIndicator from "@/components/tailwind-indicator"
-import ThemeProvider from "@/components/theme-provider"
+import TailwindIndicator from "@/components/tailwindIndicator"
+import ThemeProvider from "@/components/themeProvider"
 
 interface GuidesLayoutProps {
   children: React.ReactNode

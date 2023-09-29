@@ -9,7 +9,7 @@ import { sanityFetch } from "@/sanity/lib/sanityFetch"
 import { urlForImage } from "@/sanity/lib/image"
 
 import { Icons } from "@/components/icons"
-import { DocsPageHeader } from "@/components/page-header"
+import { DocsPageHeader } from "@/components/pageHeader"
 
 import { cn, formatDate } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
