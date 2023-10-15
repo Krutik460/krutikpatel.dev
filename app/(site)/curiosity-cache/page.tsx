@@ -2,7 +2,7 @@
 import { draftMode } from "next/headers"
 
 import { token } from "@/sanity/lib/sanityFetch"
-import PreviewProvider from "@/components/PreviewProvider"
+import PreviewProvider from "@/components/provider/PreviewProvider"
 
 export const metadata = {
   title: "Blogs",

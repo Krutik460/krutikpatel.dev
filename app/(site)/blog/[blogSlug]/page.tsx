@@ -6,7 +6,7 @@ import { Blog } from "@/components/blog/Blog"
 import { BlogDef, PostDef } from "@/types/sanity"
 import { blogQuery, postsQuery } from "@/sanity/lib/queries"
 import { sanityFetch, token } from "@/sanity/lib/sanityFetch"
-import PreviewProvider from "@/components/PreviewProvider"
+import PreviewProvider from "@/components/provider/PreviewProvider"
 import PreviewBlog from "@/components/blog/PreviewBlog"
 
 interface BlogPageProps {

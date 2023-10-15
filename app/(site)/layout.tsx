@@ -7,7 +7,7 @@ import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import SiteHeader from "@/components/SiteHeader"
 import TailwindIndicator from "@/components/TailwindIndicator"
-import ThemeProvider from "@/components/ThemeProvider"
+import ThemeProvider from "@/components/provider/ThemeProvider"
 
 export const metadata: Metadata = {
   title: {

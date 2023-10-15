@@ -4,7 +4,7 @@ import { Blogs } from "@/components/blog/Blogs"
 import { BlogDef } from "@/types/sanity"
 import { blogsQuery } from "@/sanity/lib/queries"
 import { sanityFetch, token } from "@/sanity/lib/sanityFetch"
-import PreviewProvider from "@/components/PreviewProvider"
+import PreviewProvider from "@/components/provider/PreviewProvider"
 import PreviewBlogs from "@/components/blog/PreviewBlogs"
 
 export const metadata = {
