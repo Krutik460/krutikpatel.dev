@@ -1,6 +1,17 @@
 // ./nextjs-app/sanity/lib/queries.ts
 
+import exp from "constants"
 import { groq } from "next-sanity"
+
+// Get cache count
+export const cacheCountQuery = groq`count(*[_type == "cache"])`
+
+// Get cahce in pagination
+export const cacheQuery = groq`*[_type == "cache" && (publishedAt > $lastPublishedAt || (publishedAt == $lastPublishedAt && _id > $lastId)] | order(publishedAt) [0...15] {
+  _id, 
+  title, 
+  url,
+  publishedAt}`
 
 // Get all blogs
 export const blogsQuery = groq`*[_type == "blog"]{

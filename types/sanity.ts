@@ -1,5 +1,12 @@
 import { PortableTextBlock, Image } from "sanity"
 
+export type CacheDef = {
+  _id: string
+  title: string
+  url: string
+  publishedAt: string
+}
+
 export type BlogDef = {
   _id: string
   title: string

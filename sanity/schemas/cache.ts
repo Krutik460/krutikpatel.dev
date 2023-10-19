@@ -16,5 +16,11 @@ export default defineType({
       type: "url",
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "publishedAt",
+      title: "Published at",
+      type: "datetime",
+      validation: (Rule) => Rule.required(),
+    }),
   ],
 })

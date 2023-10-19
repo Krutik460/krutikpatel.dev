@@ -13,6 +13,10 @@ export const siteConfig = {
       title: "Blogs",
       href: "/blog",
     },
+    {
+      title: "Curiosity Cache",
+      href: "/curiosity-cache",
+    },
   ],
   links: {
     twitter: "https://twitter.com/krutik460",
