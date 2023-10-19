@@ -59,14 +59,16 @@ export function Post({
         </div>
         {postInfo.mainImage &&
           showMainImageBlogsIds.includes(postInfo.blog._ref) && (
-            <Image
-              src={urlForImage(postInfo.mainImage).url()}
-              alt="test"
-              width={720}
-              height={405}
-              className="my-8 rounded-md border bg-muted transition-colors"
-              priority
-            />
+            <Link href={postInfo.sourceUrl}>
+              <Image
+                src={urlForImage(postInfo.mainImage).url()}
+                alt="test"
+                width={720}
+                height={405}
+                className="my-8 rounded-md border bg-muted transition-colors"
+                priority
+              />
+            </Link>
           )}
         {postInfo.mainImage &&
           showSideImageBogsIds.includes(postInfo.blog._ref) && (
