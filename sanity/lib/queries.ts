@@ -7,7 +7,7 @@ import { groq } from "next-sanity"
 export const cacheCountQuery = groq`count(*[_type == "cache"])`
 
 // Get cahce in pagination
-export const cacheQuery = groq`*[_type == "cache" && (publishedAt > $lastPublishedAt || (publishedAt == $lastPublishedAt && _id > $lastId)] | order(publishedAt) [0...15] {
+export const cacheQuery = groq`*[_type == "cache"] | order(publishedAt) [$start...$end] {
   _id, 
   title, 
   url,

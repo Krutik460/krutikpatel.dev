@@ -22,5 +22,11 @@ export default defineType({
       type: "datetime",
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "category",
+      title: "Category",
+      type: "array",
+      of: [{ type: "reference", to: { type: "category" } }],
+    }),
   ],
 })
