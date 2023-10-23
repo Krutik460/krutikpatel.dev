@@ -51,7 +51,7 @@ export function Blog({
                   priority={index <= 1}
                 />
               )}
-              <h2 className="text-2xl font-extrabold">{post.title}</h2>
+              <h2 className="text-xl font-bold">{post.title}</h2>
               {post.publishedAt && (
                 <p className="text-sm text-muted-foreground">
                   {formatDate(post.publishedAt)}
