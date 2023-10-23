@@ -14,7 +14,7 @@ export const cacheQuery = groq`*[_type == "cache"] | order(publishedAt) [$start.
   publishedAt}`
 
 // Get all blogs
-export const blogsQuery = groq`*[_type == "blog"]{
+export const blogsQuery = groq`*[_type == "blog"] | order(title)[]{
   _id, 
   title, 
   slug, 
@@ -30,7 +30,7 @@ export const blogQuery = groq`*[_type == "blog" && slug.current == $slug][0]{
   description}`
 
 // Get all post for a blog
-export const postsQuery = groq`*[_type == "post" && blog._ref == $_id][]{
+export const postsQuery = groq`*[_type == "post" && blog._ref == $_id] | order(publishedAt desc)[]{
   _id,
   title,
   slug,
