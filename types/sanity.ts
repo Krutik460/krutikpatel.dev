@@ -22,7 +22,7 @@ export type PostDef = {
   }
   mainImage: Image
   description: string
-  sourceUrl: string
+  sourceUrl: string | undefined
   body: PortableTextBlock[]
 }
 
