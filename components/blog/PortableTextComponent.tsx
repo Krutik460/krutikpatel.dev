@@ -49,6 +49,12 @@ export const customBlockComponents = {
         {children}
       </blockquote>
     ),
+    code: ({ children }: any) => (
+      <code className="relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm">
+        {children}
+      </code>
+    ),
+    break: ({ children }: any) => <p className="my-3"></p>,
   },
   list: {
     // Ex. 1: customizing common list types

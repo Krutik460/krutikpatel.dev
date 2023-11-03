@@ -27,7 +27,6 @@ export const postsQuery = groq`*[_type == "post" && blog._ref == $_id] | order(p
   blog,
   mainImage,
   alt,
-  sourceUrl,
   body
 }`
 
@@ -41,6 +40,5 @@ export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{
   blog,
   mainImage,
   alt,
-  sourceUrl,
   body
 }`
