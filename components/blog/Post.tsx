@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { notFound } from "next/navigation"
 import Image from "next/image"
 import { Icons } from "@/components/Icons"
 
@@ -78,29 +77,23 @@ export function Post({
         />
         <hr className="my-8" />
         {postInfo.mainImage &&
-          postInfo.sourceUrl &&
           showSideImageBogsIds.includes(postInfo.blog._ref) && (
-            <Link
-              href={postInfo.sourceUrl}
-              className="flex xl:fixed xl:right-8 xl:top-24 xl:inline-flex"
-            >
-              <article className="group relative flex items-center space-x-2 xl:h-48 xl:w-[301px] xl:flex-col xl:space-y-2">
-                {postInfo.mainImage && (
-                  <Image
-                    src={urlForImage(postInfo.mainImage).url()}
-                    alt=""
-                    width={301}
-                    height={169}
-                    className="h-28 w-48 rounded-md border bg-muted transition-colors sm:h-48 sm:w-80"
-                  />
-                )}
-                {postInfo.description && (
-                  <p className="text-sm font-medium sm:text-base">
-                    {postInfo.description}
-                  </p>
-                )}
-              </article>
-            </Link>
+            <article className="group relative flex items-center space-x-2 xl:fixed xl:right-8 xl:top-24 xl:inline-flex xl:h-48 xl:w-[301px] xl:flex-col xl:space-y-2">
+              {postInfo.mainImage && (
+                <Image
+                  src={urlForImage(postInfo.mainImage).url()}
+                  alt=""
+                  width={301}
+                  height={169}
+                  className="h-28 w-48 rounded-md border bg-muted transition-colors sm:h-48 sm:w-80"
+                />
+              )}
+              {postInfo.description && (
+                <p className="text-sm font-medium sm:text-base">
+                  {postInfo.description}
+                </p>
+              )}
+            </article>
           )}
         <div className="flex justify-center py-6 lg:py-10">
           <Link

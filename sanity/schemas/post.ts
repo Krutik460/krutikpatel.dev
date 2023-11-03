@@ -35,11 +35,6 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      title: "Link",
-      name: "sourceUrl",
-      type: "url",
-    }),
-    defineField({
       name: "mainImage",
       title: "Main image",
       type: "image",
