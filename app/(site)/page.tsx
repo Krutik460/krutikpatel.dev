@@ -3,7 +3,7 @@ export default function IndexPage() {
     <section className="flex min-h-screen max-w-full items-center justify-center">
       <div className="flex flex-col items-center justify-center gap-2">
         <h1 className="max-w-[980px] text-center	text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-          Coming Soon!
+          Krutik Patel
           {/* Beautifully designed components <br className="hidden sm:inline" />
           built with Radix UI and Tailwind CSS. */}
         </h1>
