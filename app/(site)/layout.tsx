@@ -1,6 +1,6 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
-import Script from "next/script"
+import UmamiAnalytics from "@/components/UmamiAnalytics"
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
@@ -33,13 +33,8 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <Script
-          async
-          src="https://umami-krutik-rigjcof4u-krutik460.vercel.app/script.js"
-          data-website-id="bb497e0c-7e0e-4e53-a542-35bf60053da4"
-        />
-      </head>
+      <UmamiAnalytics />
+      <head />
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
