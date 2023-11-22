@@ -1,6 +1,6 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
-import { Analytics } from "@vercel/analytics/react"
+import Script from "next/script"
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
@@ -33,7 +33,13 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        <Script
+          async
+          src="https://umami-krutik-rigjcof4u-krutik460.vercel.app/script.js"
+          data-website-id="bb497e0c-7e0e-4e53-a542-35bf60053da4"
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
@@ -43,10 +49,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="relative flex min-h-screen flex-col">
             <SiteHeader items={siteConfig.mainNav} />
-            <div className="flex-1">
-              {children}
-              <Analytics />
-            </div>
+            <div className="flex-1">{children}</div>
           </div>
           <TailwindIndicator />
         </ThemeProvider>
