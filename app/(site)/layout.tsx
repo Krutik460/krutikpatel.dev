@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 import SiteHeader from "@/components/SiteHeader"
 import TailwindIndicator from "@/components/TailwindIndicator"
 import ThemeProvider from "@/components/ThemeProvider"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: {
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <div className="relative flex min-h-screen flex-col">
             <SiteHeader items={siteConfig.mainNav} />
             <div className="flex-1">{children}</div>
+            <SpeedInsights />
           </div>
           <TailwindIndicator />
         </ThemeProvider>
