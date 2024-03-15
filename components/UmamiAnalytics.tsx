@@ -10,7 +10,7 @@ export default function UmamiAnalytics() {
     <>
       <Script
         async
-        src="https://umami-krutik-dev.vercel.app/script.js"
+        src="https://www.analytics.krutikpatel.dev/script.js"
         data-website-id={process.env.UMAMI_WEBSITE_ID}
       />
     </>
