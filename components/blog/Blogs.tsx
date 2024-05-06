@@ -11,7 +11,7 @@ export function Blogs({ blogs = [] }: { blogs: BlogDef[] }) {
           {blogs.map((blog) => (
             <article
               key={blog._id}
-              className="group relative rounded-lg border p-6 shadow-md shadow-muted transition-shadow hover:shadow-lg hover:shadow-muted"
+              className="group relative rounded-lg border p-6 shadow-md shadow-muted transition-shadow hover:shadow-xl hover:shadow-muted"
             >
               {blog.featured && (
                 <span className="absolute right-2 top-2 rounded-full px-3 py-1 text-xs font-medium">
