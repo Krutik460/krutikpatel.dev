@@ -6,7 +6,6 @@ import { urlForImage } from "@/sanity/lib/image"
 import { cn, formatDate } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/Button"
 import { Icons } from "@/components/Icons"
-import { DocsPageHeader } from "@/components/PageHeader"
 
 export function Blog({
   blogInfo,
@@ -28,14 +27,20 @@ export function Blog({
           <Icons.chevronLeft className="mr-2 h-5 w-5 text-muted-foreground hover:text-accent-foreground md:h-8 md:w-8" />
         </Link>
         <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
-          <DocsPageHeader
-            heading={blogInfo.title}
-            text={blogInfo.description}
-          />
+          <div className="space-y-4">
+            <h1 className="font-heading inline-block text-2xl md:text-4xl lg:text-4xl">
+              {blogInfo.title}
+            </h1>
+            {blogInfo.description && (
+              <p className="text-base text-muted-foreground md:text-lg">
+                {blogInfo.description}
+              </p>
+            )}
+          </div>
         </div>
       </div>
-      <hr className="m-0 mb-2 hidden md:my-8 md:block" />
-      <div className="mb-14">
+      <hr className="m-0 mb-2 hidden md:mt-8 md:block" />
+      <div className="mb-14 mt-4 md:mt-8">
         {posts?.length ? (
           <div className="grid gap-10 sm:grid-cols-2">
             {posts.map((post, index) => (

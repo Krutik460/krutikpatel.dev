@@ -5,5 +5,5 @@ interface GuidesLayoutProps {
 }
 
 export default function GuidesLayout({ children }: GuidesLayoutProps) {
-  return <div className="mx-auto max-w-5xl px-6 md:px-12">{children}</div>
+  return <div className="mx-auto max-w-6xl px-6 md:px-12">{children}</div>
 }

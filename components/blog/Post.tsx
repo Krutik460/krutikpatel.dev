@@ -69,7 +69,17 @@ export function Post({
           )}
         {postInfo.mainImage &&
           showSideImageBogsIds.includes(postInfo.blog._ref) && (
-            <hr className="my-8" />
+            <>
+              <hr className="my-8 hidden xl:block" />
+              <Image
+                src={urlForImage(postInfo.mainImage).url()}
+                alt="test"
+                width={720}
+                height={405}
+                className="my-8 rounded-md border bg-muted transition-colors xl:hidden"
+                priority
+              />
+            </>
           )}
         <PortableText
           value={postInfo.body}
@@ -78,7 +88,7 @@ export function Post({
         <hr className="my-8" />
         {postInfo.mainImage &&
           showSideImageBogsIds.includes(postInfo.blog._ref) && (
-            <article className="group relative flex items-center space-x-2 xl:fixed xl:right-8 xl:top-24 xl:inline-flex xl:h-48 xl:w-[301px] xl:flex-col xl:space-y-2">
+            <article className="hidden xl:fixed xl:right-8 xl:top-24 xl:inline-flex xl:h-48 xl:w-[301px] xl:flex-col xl:space-y-2">
               {postInfo.mainImage && (
                 <Image
                   src={urlForImage(postInfo.mainImage).url()}
