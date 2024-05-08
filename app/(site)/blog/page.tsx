@@ -1,4 +1,5 @@
 import { draftMode } from "next/headers"
+import { Suspense } from "react"
 
 import { Blogs } from "@/components/blog/Blogs"
 import { BlogDef } from "@/types/sanity"
@@ -31,7 +32,9 @@ export default async function BlogPage() {
   return (
     <div className="flex flex-col gap-4">
       <Blogs blogs={blogs} />
-      <Recommendation />
+      <Suspense fallback={<p>Loading Recommendation...</p>}>
+        <Recommendation />
+      </Suspense>
     </div>
   )
 }
