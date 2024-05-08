@@ -22,6 +22,11 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      title: "Featured",
+      name: "featured",
+      type: "boolean",
+    }),
+    defineField({
       name: "publishedAt",
       title: "Published at",
       type: "datetime",

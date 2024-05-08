@@ -16,6 +16,7 @@ export type PostDef = {
   slug: {
     current: string
   }
+  featured: boolean
   publishedAt: string
   blog: {
     _ref: string
