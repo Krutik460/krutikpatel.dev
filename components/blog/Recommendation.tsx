@@ -7,7 +7,12 @@ import Link from "next/link"
 import { formatDate } from "@/lib/utils"
 import { PostDef, CategoryDef } from "@/types/sanity"
 import { client } from "@/sanity/lib/client"
-import { categoryPost, recentPost, categoryQuery } from "@/sanity/lib/queries"
+import {
+  categoryPost,
+  recentPost,
+  categoryQuery,
+  featuredPost,
+} from "@/sanity/lib/queries"
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Button } from "@/components/ui/Button"
@@ -15,7 +20,11 @@ import { Separator } from "@/components/ui/separator"
 
 const getFilteredData = async (filter: string) => {
   if (filter) {
-    return await client.fetch(categoryPost.replace("$_id", `"${filter}"`))
+    if (filter === "featured") {
+      return await client.fetch(featuredPost)
+    } else {
+      return await client.fetch(categoryPost.replace("$_id", `"${filter}"`))
+    }
   } else {
     return await client.fetch(recentPost)
   }
@@ -34,15 +43,25 @@ export async function Recommendation() {
       <div className="flex flex-col">
         <Separator className="mb-4 mt-2 sm:mt-8" />
         <div className="mb-8 flex items-center">
-          <Button variant="link" onClick={() => router.push("/blog")}>
+          <Button
+            variant="link"
+            className="pr-0 md:pr-4"
+            onClick={() => router.push("/blog")}
+          >
             <h3 className="text-lg tracking-tight">Recent</h3>
+          </Button>
+          <Button
+            variant="link"
+            onClick={() => router.push("/blog?filter=featured")}
+          >
+            <h3 className="text-lg tracking-tight">Featured</h3>
           </Button>
 
           <ToggleGroup
             type="single"
             variant="capsule"
             size="capsule"
-            className="overflow-auto"
+            className="overflow-auto pl-0 md:pl-4"
             onValueChange={(value) => {
               if (value) router.push(`/blog/?filter=${value}`)
             }}
