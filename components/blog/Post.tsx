@@ -4,6 +4,7 @@ import { Icons } from "@/components/Icons"
 
 import { cn, formatDate } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/Button"
+import { Separator } from "@/components/ui/separator"
 
 import { PostDef } from "@/types/sanity"
 import { urlForImage } from "@/sanity/lib/image"
@@ -70,7 +71,7 @@ export function Post({
         {postInfo.mainImage &&
           showSideImageBogsIds.includes(postInfo.blog._ref) && (
             <>
-              <hr className="my-8 hidden xl:block" />
+              <Separator className="my-8 hidden xl:block" />
               <Image
                 src={urlForImage(postInfo.mainImage).url()}
                 alt="test"
@@ -85,7 +86,7 @@ export function Post({
           value={postInfo.body}
           components={customBlockComponents}
         />
-        <hr className="my-8" />
+        <Separator className="my-8" />
         {postInfo.mainImage &&
           showSideImageBogsIds.includes(postInfo.blog._ref) && (
             <article className="hidden xl:fixed xl:right-8 xl:top-24 xl:inline-flex xl:h-48 xl:w-[301px] xl:flex-col xl:space-y-2">

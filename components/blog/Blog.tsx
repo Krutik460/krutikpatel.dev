@@ -6,6 +6,7 @@ import { urlForImage } from "@/sanity/lib/image"
 import { cn, formatDate } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/Button"
 import { Icons } from "@/components/Icons"
+import { Separator } from "@/components/ui/separator"
 
 export function Blog({
   blogInfo,
@@ -39,7 +40,7 @@ export function Blog({
           </div>
         </div>
       </div>
-      <hr className="m-0 mb-2 hidden md:mt-8 md:block" />
+      <Separator className="m-0 mb-2 hidden md:mt-8 md:block" />
       <div className="mb-14 mt-4 md:mt-8">
         {posts?.length ? (
           <div className="grid gap-10 sm:grid-cols-2">

@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import { Separator } from "@/components/ui/separator"
 
 interface DocsPageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   heading: string
@@ -21,7 +22,7 @@ export function DocsPageHeader({
           <p className="text-lg text-muted-foreground md:text-xl">{text}</p>
         )}
       </div>
-      <hr className="my-4" />
+      <Separator className="my-4" />
     </>
   )
 }

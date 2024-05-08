@@ -1,5 +1,5 @@
 {
-  "name": "krutik.dev-test2",
+  "name": "krutik.dev",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@portabletext/react": "^3.0.7",
+    "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-toggle-group": "^1.0.4",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.15.1",
     "@types/node": "20.2.5",
