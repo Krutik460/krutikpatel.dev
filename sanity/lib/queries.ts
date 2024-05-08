@@ -42,3 +42,19 @@ export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{
   alt,
   body
 }`
+
+// Get 3 recent posts
+export const recentPost = groq`*[_type == "post"] | order(publishedAt desc)[0..2]{
+  _id, 
+  title, 
+  slug, 
+  featured,
+  description}`
+
+// Get 3 recent posts
+export const categoryPost = groq`*[_type == "post" && $_id in category[]->_id]{
+  _id, 
+  title, 
+  slug, 
+  featured,
+  description}`
