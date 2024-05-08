@@ -20,6 +20,8 @@ export type PostDef = {
   publishedAt: string
   blog: {
     _ref: string
+    slug: string
+    title: string
   }
   mainImage: Image
   description: string

@@ -6,6 +6,7 @@ import { blogsQuery } from "@/sanity/lib/queries"
 import { sanityFetch, token } from "@/sanity/lib/sanityFetch"
 import PreviewProvider from "@/components/PreviewProvider"
 import PreviewBlogs from "@/components/blog/PreviewBlogs"
+import { Recommendation } from "@/components/blog/Recommendation"
 
 export const metadata = {
   title: "Blogs",
@@ -19,10 +20,18 @@ export default async function BlogPage() {
   if (isDraftMode && token) {
     return (
       <PreviewProvider token={token}>
-        <PreviewBlogs blogs={blogs} />
+        <div className="flex flex-col gap-4">
+          <PreviewBlogs blogs={blogs} />
+          <Recommendation />
+        </div>
       </PreviewProvider>
     )
   }
 
-  return <Blogs blogs={blogs} />
+  return (
+    <div className="flex flex-col gap-4">
+      <Blogs blogs={blogs} />
+      <Recommendation />
+    </div>
+  )
 }
