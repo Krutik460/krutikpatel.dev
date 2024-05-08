@@ -4,11 +4,6 @@ import { sanityFetch } from "@/sanity/lib/sanityFetch"
 
 const URL = process.env.SITE_URL
 
-interface PostUrl {
-  url: string
-  lastModified: string
-}
-
 export default async function sitemap() {
   const blogs: BlogDef[] = await sanityFetch<BlogDef[]>({ query: blogsQuery })
 
@@ -24,7 +19,8 @@ export default async function sitemap() {
     })
     const tempPostsUrl = posts.map((post) => ({
       url: `${URL}/blog/${blog.slug.current}/${post.slug.current}`,
-      lastModified: post.publishedAt,
+      // lastModified: post.publishedAt,
+      lastModified: new Date().toISOString(),
     }))
     return tempPostsUrl
   })
@@ -32,7 +28,7 @@ export default async function sitemap() {
 
   const routes = ["", "/blog"].map((route) => ({
     url: `${URL}${route}`,
-    lastModified: new Date(2023, 5, 4).toISOString(),
+    lastModified: new Date().toISOString(),
   }))
 
   return [...routes, ...blogsUrl, ...postsUrlFlat]
