@@ -48,13 +48,25 @@ export async function Recommendation() {
             className="pr-0 md:pr-4"
             onClick={() => router.push("/blog")}
           >
-            <h3 className="text-lg tracking-tight">Recent</h3>
+            <h3
+              className={`text-lg tracking-tight ${
+                filter == "" ? "underline" : ""
+              }`}
+            >
+              Recent
+            </h3>
           </Button>
           <Button
             variant="link"
             onClick={() => router.push("/blog?filter=featured")}
           >
-            <h3 className="text-lg tracking-tight">Featured</h3>
+            <h3
+              className={`text-lg tracking-tight ${
+                filter == "featured" ? "underline" : ""
+              }`}
+            >
+              Featured
+            </h3>
           </Button>
 
           <ToggleGroup
