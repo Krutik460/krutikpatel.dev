@@ -90,22 +90,25 @@ export async function Recommendation() {
           </ToggleGroup>
         </div>
         {filterData?.length ? (
-          <div className="grid gap-8 sm:grid-cols-3 sm:gap-5">
+          <div className="grid gap-8 sm:grid-cols-3 sm:gap-24">
             {filterData.map((post) => (
               <article
                 key={post._id}
                 className="group relative flex flex-col space-y-2"
               >
-                <h2 className="text-lg font-medium tracking-tight">
+                <h2 className="text-lg font-medium tracking-tight group-hover:underline">
                   {post.title}
                 </h2>
                 <p className="text-muted-foreground">{post.description}</p>
-                {post.publishedAt && (
-                  <p className="text-sm text-muted-foreground">
-                    {formatDate(post.publishedAt)}
-                  </p>
-                )}
-                <p className="text-sm text-muted-foreground">Read more →</p>
+                <div className="me-2 flex justify-between">
+                  {post.publishedAt && (
+                    <p className="text-sm text-muted-foreground">
+                      {formatDate(post.publishedAt)}
+                    </p>
+                  )}
+                  <p className="text-sm text-muted-foreground">Read more →</p>
+                </div>
+
                 <Link
                   href={`blog/${post.blog.slug}/${post.slug.current}`}
                   className="absolute inset-0"

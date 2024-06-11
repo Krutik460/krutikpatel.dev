@@ -43,7 +43,6 @@ export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{
   body
 }`
 
-// Get 3 recent posts
 export const categoryQuery = groq`*[_type == "category"]{
   _id, 
   title}`
@@ -54,6 +53,7 @@ export const recentPost = groq`*[_type == "post"] | order(publishedAt desc)[0..2
   title, 
   slug, 
   "blog": {"ref":blog._ref, "slug":blog->slug.current, "title":blog->title},
+  publishedAt,
   description}`
 
 // Get filtered post based on category
@@ -61,7 +61,9 @@ export const categoryPost = groq`*[_type == "post" && $_id in category[]->_id] |
   _id, 
   title, 
   slug, 
+  publishedAt,
   "blog": {"ref":blog._ref, "slug":blog->slug.current, "title":blog->title},
+  publishedAt,
   description}`
 
 // Get filtered post based on category
@@ -71,4 +73,5 @@ export const featuredPost = groq`*[_type == "post" && featured] | order(publishe
   slug, 
   featured,
   "blog": {"ref":blog._ref, "slug":blog->slug.current, "title":blog->title},
+  publishedAt,
   description}`

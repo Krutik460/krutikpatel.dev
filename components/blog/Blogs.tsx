@@ -2,8 +2,6 @@ import Link from "next/link"
 
 import { BlogDef } from "@/types/sanity"
 import { DocsPageHeader } from "@/components/PageHeader"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { Separator } from "@/components/ui/separator"
 
 export function Blogs({ blogs = [] }: { blogs: BlogDef[] }) {
   return (
@@ -22,7 +20,7 @@ export function Blogs({ blogs = [] }: { blogs: BlogDef[] }) {
               )}
               <div className="flex flex-col justify-between space-y-4">
                 <div className="space-y-2">
-                  <h2 className="text-xl font-medium tracking-tight">
+                  <h2 className="text-xl font-medium tracking-tight group-hover:underline">
                     {blog.title}
                   </h2>
                   <p className="text-muted-foreground">{blog.description}</p>
