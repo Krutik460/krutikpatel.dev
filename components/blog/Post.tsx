@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Icons } from "@/components/Icons"
 
-import { cn, formatDate } from "@/lib/utils"
+import { cn, formatDate, getIndex } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/Button"
 import { Separator } from "@/components/ui/separator"
 
@@ -19,24 +19,7 @@ export function Post({
   blogSlug: string
   postInfo: PostDef
 }) {
-  const index: { key: string; title: any; level: string }[] = []
-  postInfo.body.forEach((element: PortableTextBlock) => {
-    if (
-      element.style === "h1" ||
-      element.style === "h2" ||
-      element.style === "h3" ||
-      element.style === "h4"
-    ) {
-      index.push({
-        key: element._key,
-        title: (element.children as any)[0].text,
-        level: element.style.replace("h", ""),
-      })
-    }
-  })
-  // Create list of unique levels
-  const levels = [...new Set(index.map((item) => item.level))]
-
+  const { index, levels } = getIndex(postInfo.body as PortableTextBlock[])
   return (
     <>
       <article className="container relative max-w-3xl py-6 lg:py-10">
@@ -77,8 +60,7 @@ export function Post({
         </div>
         {postInfo.mainImage && (
           <>
-            <Separator className="my-8 hidden xl:block" />
-            <div className="my-8 xl:hidden">
+            <div className="my-8 xl:fixed xl:right-8 xl:top-24 xl:inline-flex xl:w-1/5 xl:flex-col xl:space-y-2">
               <Image
                 src={urlForImage(postInfo.mainImage).url()}
                 alt="test"
@@ -89,58 +71,28 @@ export function Post({
               />
               <h4 className="text-lg font-medium">Table of Contents</h4>
               <div className="list-disc">
-                {index.map((item, idx) => (
+                {index.map((item) => (
                   <a
-                    key={idx}
+                    key={item.key}
                     href={`#${item.key}`}
-                    className={`block text-muted-foreground ms-${
-                      levels.indexOf(item.level) * 4
-                    }`}
+                    className={`block py-[0.2rem] text-sm text-muted-foreground sm:text-base xl:text-sm `}
                   >
+                    <pre className="inline-block">
+                      {" ".repeat(levels.indexOf(item.level) * 3)}
+                    </pre>
                     {item.title.replace(":", "")}
                   </a>
                 ))}
-                <Separator className="my-8" />
               </div>
             </div>
           </>
         )}
+        <Separator className="mt-4" />
         <PortableText
           value={postInfo.body}
           components={customBlockComponents}
         />
         <Separator className="my-8" />
-        {postInfo.mainImage && (
-          <article className="hidden xl:fixed xl:right-8 xl:top-24 xl:inline-flex xl:h-48 xl:w-[301px] xl:flex-col xl:space-y-2">
-            {postInfo.mainImage && (
-              <>
-                <Image
-                  src={urlForImage(postInfo.mainImage).url()}
-                  alt=""
-                  width={301}
-                  height={169}
-                  className="h-28 w-48 rounded-md border bg-muted transition-colors sm:h-48 sm:w-80"
-                />
-                <div className="my-8">
-                  <h4 className="text-lg font-medium">Table of Contents</h4>
-                  <div className="list-disc">
-                    {index.map((item, idx) => (
-                      <a
-                        key={idx}
-                        href={`#${item.key}`}
-                        className={`block text-muted-foreground ms-${
-                          levels.indexOf(item.level) * 4
-                        }`}
-                      >
-                        {item.title.replace(":", "")}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </>
-            )}
-          </article>
-        )}
         <div className="flex justify-center py-6 lg:py-10">
           <Link
             href={`/blog/${blogSlug}`}

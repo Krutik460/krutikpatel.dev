@@ -31,7 +31,6 @@ export default defineType({
         { title: "H4", value: "h4" },
         { title: "Quote", value: "blockquote" },
         { title: "Code", value: "code" },
-        { title: "Break", value: "break" },
       ],
       lists: [
         { title: "Bullet", value: "bullet" },

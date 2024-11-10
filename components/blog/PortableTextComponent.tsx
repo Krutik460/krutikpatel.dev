@@ -20,7 +20,12 @@ export const customBlockComponents = {
     },
   },
   block: {
-    h1: ({ children, value }: any) => (
+    normal: ({ value, children }: any) => (
+      <p id={value["_key"]} className="scroll-m-20 [&:not(:first-child)]:mt-4">
+        {children}
+      </p>
+    ),
+    h1: ({ value, children }: any) => (
       <h1
         id={value["_key"]}
         className="mt-2 scroll-m-20 text-4xl font-bold tracking-tight"
@@ -52,9 +57,6 @@ export const customBlockComponents = {
         {children}
       </h4>
     ),
-    p: ({ children }: any) => (
-      <p className="leading-7 [&:not(:first-child)]:mt-6">{children}</p>
-    ),
     li: ({ children }: any) => <li className="mt-2">{children}</li>,
     blockquote: ({ children }: any) => (
       <blockquote className="mt-6 border-l-2 pl-6 italic [&>*]:text-muted-foreground">
@@ -66,7 +68,6 @@ export const customBlockComponents = {
         {children}
       </code>
     ),
-    break: () => <p className="my-3"></p>,
   },
   list: {
     // Ex. 1: customizing common list types
