@@ -10,7 +10,7 @@ import { PostDef } from "@/types/sanity"
 import { urlForImage } from "@/sanity/lib/image"
 import { customBlockComponents } from "@/components/blog/PortableTextComponent"
 import { PortableText } from "@portabletext/react"
-import { showMainImageBlogsIds, showSideImageBogsIds } from "@/config/blog"
+import { PortableTextBlock } from "sanity"
 
 export function Post({
   blogSlug,
@@ -19,6 +19,24 @@ export function Post({
   blogSlug: string
   postInfo: PostDef
 }) {
+  const index: { key: string; title: any; level: string }[] = []
+  postInfo.body.forEach((element: PortableTextBlock) => {
+    if (
+      element.style === "h1" ||
+      element.style === "h2" ||
+      element.style === "h3" ||
+      element.style === "h4"
+    ) {
+      index.push({
+        key: element._key,
+        title: (element.children as any)[0].text,
+        level: element.style.replace("h", ""),
+      })
+    }
+  })
+  // Create list of unique levels
+  const levels = [...new Set(index.map((item) => item.level))]
+
   return (
     <>
       <article className="container relative max-w-3xl py-6 lg:py-10">
@@ -41,7 +59,7 @@ export function Post({
               Published on {formatDate(postInfo.publishedAt)}
             </time>
           )}
-          <h1 className="font-heading mt-2 inline-block text-4xl leading-tight lg:text-5xl">
+          <h1 className="font-heading mt-2 inline-block text-3xl leading-tight md:text-4xl lg:text-5xl">
             {postInfo.title}
           </h1>
           <div className="mt-4 flex space-x-4">
@@ -57,40 +75,45 @@ export function Post({
             </Link>
           </div>
         </div>
-        {postInfo.mainImage &&
-          showMainImageBlogsIds.includes(postInfo.blog._ref) && (
-            <Image
-              src={urlForImage(postInfo.mainImage).url()}
-              alt="test"
-              width={720}
-              height={405}
-              className="my-8 rounded-md border bg-muted transition-colors"
-              priority
-            />
-          )}
-        {postInfo.mainImage &&
-          showSideImageBogsIds.includes(postInfo.blog._ref) && (
-            <>
-              <Separator className="my-8 hidden xl:block" />
+        {postInfo.mainImage && (
+          <>
+            <Separator className="my-8 hidden xl:block" />
+            <div className="my-8 xl:hidden">
               <Image
                 src={urlForImage(postInfo.mainImage).url()}
                 alt="test"
                 width={720}
                 height={405}
-                className="my-8 rounded-md border bg-muted transition-colors xl:hidden"
+                className="my-8 rounded-md border bg-muted transition-colors"
                 priority
               />
-            </>
-          )}
+              <h4 className="text-lg font-medium">Table of Contents</h4>
+              <div className="list-disc">
+                {index.map((item, idx) => (
+                  <a
+                    key={idx}
+                    href={`#${item.key}`}
+                    className={`block text-muted-foreground ms-${
+                      levels.indexOf(item.level) * 4
+                    }`}
+                  >
+                    {item.title.replace(":", "")}
+                  </a>
+                ))}
+                <Separator className="my-8" />
+              </div>
+            </div>
+          </>
+        )}
         <PortableText
           value={postInfo.body}
           components={customBlockComponents}
         />
         <Separator className="my-8" />
-        {postInfo.mainImage &&
-          showSideImageBogsIds.includes(postInfo.blog._ref) && (
-            <article className="hidden xl:fixed xl:right-8 xl:top-24 xl:inline-flex xl:h-48 xl:w-[301px] xl:flex-col xl:space-y-2">
-              {postInfo.mainImage && (
+        {postInfo.mainImage && (
+          <article className="hidden xl:fixed xl:right-8 xl:top-24 xl:inline-flex xl:h-48 xl:w-[301px] xl:flex-col xl:space-y-2">
+            {postInfo.mainImage && (
+              <>
                 <Image
                   src={urlForImage(postInfo.mainImage).url()}
                   alt=""
@@ -98,14 +121,26 @@ export function Post({
                   height={169}
                   className="h-28 w-48 rounded-md border bg-muted transition-colors sm:h-48 sm:w-80"
                 />
-              )}
-              {postInfo.description && (
-                <p className="text-sm font-medium sm:text-base">
-                  {postInfo.description}
-                </p>
-              )}
-            </article>
-          )}
+                <div className="my-8">
+                  <h4 className="text-lg font-medium">Table of Contents</h4>
+                  <div className="list-disc">
+                    {index.map((item, idx) => (
+                      <a
+                        key={idx}
+                        href={`#${item.key}`}
+                        className={`block text-muted-foreground ms-${
+                          levels.indexOf(item.level) * 4
+                        }`}
+                      >
+                        {item.title.replace(":", "")}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </>
+            )}
+          </article>
+        )}
         <div className="flex justify-center py-6 lg:py-10">
           <Link
             href={`/blog/${blogSlug}`}

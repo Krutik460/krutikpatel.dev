@@ -20,23 +20,35 @@ export const customBlockComponents = {
     },
   },
   block: {
-    h1: ({ children }: any) => (
-      <h1 className="mt-2 scroll-m-20 text-4xl font-bold tracking-tight">
+    h1: ({ children, value }: any) => (
+      <h1
+        id={value["_key"]}
+        className="mt-2 scroll-m-20 text-4xl font-bold tracking-tight"
+      >
         {children}
       </h1>
     ),
-    h2: ({ children }: any) => (
-      <h2 className="mt-10 scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0">
+    h2: ({ value, children }: any) => (
+      <h2
+        id={value["_key"]}
+        className="mt-10 scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0"
+      >
         {children}
       </h2>
     ),
-    h3: ({ children }: any) => (
-      <h3 className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">
+    h3: ({ value, children }: any) => (
+      <h3
+        id={value["_key"]}
+        className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight"
+      >
         {children}
       </h3>
     ),
-    h4: ({ children }: any) => (
-      <h4 className="mt-8 scroll-m-20 text-xl font-semibold tracking-tight">
+    h4: ({ value, children }: any) => (
+      <h4
+        id={value["_key"]}
+        className="mt-8 scroll-m-20 text-xl font-semibold tracking-tight"
+      >
         {children}
       </h4>
     ),
