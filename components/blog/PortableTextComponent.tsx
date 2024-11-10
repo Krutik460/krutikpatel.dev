@@ -54,7 +54,7 @@ export const customBlockComponents = {
         {children}
       </code>
     ),
-    break: ({ children }: any) => <p className="my-3"></p>,
+    break: () => <p className="my-3"></p>,
   },
   list: {
     // Ex. 1: customizing common list types

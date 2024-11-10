@@ -31,6 +31,7 @@ export default defineType({
         { title: "H4", value: "h4" },
         { title: "Quote", value: "blockquote" },
         { title: "Code", value: "code" },
+        { title: "Break", value: "break" },
       ],
       lists: [
         { title: "Bullet", value: "bullet" },
@@ -43,7 +44,6 @@ export default defineType({
         decorators: [
           { title: "Strong", value: "strong" },
           { title: "Emphasis", value: "em" },
-          { title: "Break", value: "break" },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
