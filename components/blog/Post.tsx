@@ -75,7 +75,7 @@ export function Post({
                   <a
                     key={item.key}
                     href={`#${item.key}`}
-                    className={`block py-[0.2rem] text-sm text-muted-foreground sm:text-base xl:text-sm `}
+                    className={`block py-[0.2rem] text-sm text-muted-foreground transition-all duration-300 hover:text-foreground hover:underline sm:text-base xl:text-sm `}
                   >
                     <pre className="inline-block">
                       {" ".repeat(levels.indexOf(item.level) * 3)}
