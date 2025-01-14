@@ -24,6 +24,7 @@ export type PostDef = {
     title: string
   }
   mainImage: Image
+  iframeUrl: string
   description: string
   body: PortableTextBlock[]
 }

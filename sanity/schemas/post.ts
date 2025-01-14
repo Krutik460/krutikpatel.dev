@@ -49,6 +49,15 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "iframeUrl",
+      title: "Podcast URL",
+      type: "url",
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ["http", "https"],
+        }),
+    }),
+    defineField({
       name: "description",
       type: "string",
       title: "Description",

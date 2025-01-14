@@ -20,6 +20,7 @@ export function Post({
   postInfo: PostDef
 }) {
   const { index, levels } = getIndex(postInfo.body as PortableTextBlock[])
+
   return (
     <>
       <article className="container relative max-w-3xl py-6 lg:py-10">
@@ -61,14 +62,36 @@ export function Post({
         {postInfo.mainImage && (
           <>
             <div className="my-8 xl:fixed xl:right-8 xl:top-24 xl:inline-flex xl:w-1/5 xl:flex-col xl:space-y-2">
-              <Image
-                src={urlForImage(postInfo.mainImage).url()}
-                alt="test"
-                width={720}
-                height={405}
-                className="my-8 rounded-md border bg-muted transition-colors"
-                priority
-              />
+              {postInfo.iframeUrl && (
+                // <iframe
+                //   className="my-8 h-[190px] w-full rounded-md border sm:h-[300px] md:h-[405px] xl:h-[165px]"
+                //   src={postInfo.iframeUrl + "?controls=0"}
+                //   title={postInfo.title}
+                //   frameBorder="0"
+                //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+                //   referrerPolicy="strict-origin-when-cross-origin"
+                // />
+                <div className="relative pb-[56.25%]">
+                  <iframe
+                    className="absolute left-0 top-0 h-full w-full rounded-md border"
+                    width="100%"
+                    height="100%"
+                    src={postInfo.iframeUrl + "?fs=0&modestbranding=1&rel=0"}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  />
+                </div>
+              )}
+              {!postInfo.iframeUrl && (
+                <Image
+                  src={urlForImage(postInfo.mainImage).url()}
+                  alt="test"
+                  width={720}
+                  height={405}
+                  className="my-8 rounded-md border bg-muted transition-colors"
+                  priority
+                />
+              )}
               <h4 className="text-lg font-medium">Table of Contents</h4>
               <div className="list-disc">
                 {index.map((item) => (
