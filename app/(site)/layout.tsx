@@ -45,7 +45,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="relative flex min-h-screen flex-col">
             <SiteHeader items={siteConfig.mainNav} />
-            <div className="flex-1">{children}</div>
+            <div className="flex-1">
+              <div className="mx-auto max-w-6xl px-6 md:px-12">{children}</div>
+            </div>
             <SpeedInsights />
           </div>
           <TailwindIndicator />

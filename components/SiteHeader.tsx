@@ -16,7 +16,10 @@ export default function SiteHeader({ items }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
+        <Link
+          href="https://www.krutikpatel.dev/"
+          className="flex items-center space-x-2"
+        >
           <span className="inline-block text-base font-bold max-md:text-sm">
             KP
           </span>
