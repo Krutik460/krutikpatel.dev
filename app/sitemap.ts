@@ -8,7 +8,7 @@ export default async function sitemap() {
   const blogs: BlogDef[] = await sanityFetch<BlogDef[]>({ query: blogsQuery })
 
   const blogsUrl = blogs.map(({ slug }) => ({
-    url: `${URL}/blog/${slug.current}`,
+    url: `${URL}/${slug.current}`,
     lastModified: new Date(2023, 5, 4).toISOString(),
   }))
 
@@ -18,7 +18,7 @@ export default async function sitemap() {
       params: { _id: blog._id },
     })
     const tempPostsUrl = posts.map((post) => ({
-      url: `${URL}/blog/${blog.slug.current}/${post.slug.current}`,
+      url: `${URL}/${blog.slug.current}/${post.slug.current}`,
       // lastModified: post.publishedAt,
       lastModified: new Date().toISOString(),
     }))
@@ -26,7 +26,7 @@ export default async function sitemap() {
   })
   const postsUrlFlat = (await Promise.all(postsUrl)).flat()
 
-  const routes = ["", "/blog"].map((route) => ({
+  const routes = [""].map((route) => ({
     url: `${URL}${route}`,
     lastModified: new Date().toISOString(),
   }))

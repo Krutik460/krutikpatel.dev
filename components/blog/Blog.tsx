@@ -21,7 +21,7 @@ export function Blog({
     <div>
       <div className="container mx-auto flex max-w-5xl flex-row pb-0 pt-6 lg:py-10">
         <Link
-          href="/blog"
+          href="/"
           className={cn(
             buttonVariants({ variant: "link" }),
             "hidden basis-1/4 justify-center py-2 md:inline-flex lg:py-10"
@@ -69,7 +69,7 @@ export function Blog({
                     </p>
                   )}
                   <Link
-                    href={`blog/${blogInfo.slug.current}/${post.slug.current}`}
+                    href={`/${blogInfo.slug.current}/${post.slug.current}`}
                     className="absolute inset-0"
                   >
                     <span className="sr-only">View Article</span>

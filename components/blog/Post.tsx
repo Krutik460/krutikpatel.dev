@@ -25,7 +25,7 @@ export function Post({
     <>
       <article className="container relative max-w-3xl py-6 lg:py-10">
         <Link
-          href={`/blog/${blogSlug}`}
+          href={`/${blogSlug}`}
           className={cn(
             buttonVariants({ variant: "ghost" }),
             "absolute left-[-200px] top-14 hidden xl:inline-flex"
@@ -118,7 +118,7 @@ export function Post({
         <Separator className="my-8" />
         <div className="flex justify-center py-6 lg:py-10">
           <Link
-            href={`/blog/${blogSlug}`}
+            href={`/${blogSlug}`}
             className={cn(buttonVariants({ variant: "ghost" }))}
           >
             <Icons.chevronLeft className="mr-2 h-4 w-4" />

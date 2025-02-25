@@ -46,7 +46,7 @@ export async function Recommendation() {
           <Button
             variant="link"
             className="pr-0 md:pr-4"
-            onClick={() => router.push("/blog")}
+            onClick={() => router.push("/")}
           >
             <h3
               className={`text-lg tracking-tight ${
@@ -58,7 +58,7 @@ export async function Recommendation() {
           </Button>
           <Button
             variant="link"
-            onClick={() => router.push("/blog?filter=featured")}
+            onClick={() => router.push("/?filter=featured")}
           >
             <h3
               className={`text-lg tracking-tight ${
@@ -75,7 +75,7 @@ export async function Recommendation() {
             size="capsule"
             className="overflow-auto pl-0 md:pl-4"
             onValueChange={(value) => {
-              if (value) router.push(`/blog/?filter=${value}`)
+              if (value) router.push(`/?filter=${value}`)
             }}
           >
             {category.map((cat) => (
@@ -110,7 +110,7 @@ export async function Recommendation() {
                 </div>
 
                 <Link
-                  href={`blog/${post.blog.slug}/${post.slug.current}`}
+                  href={`/${post.blog.slug}/${post.slug.current}`}
                   className="absolute inset-0"
                 >
                   <span className="sr-only">View Article</span>

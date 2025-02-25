@@ -28,7 +28,7 @@ export function Blogs({ blogs = [] }: { blogs: BlogDef[] }) {
               </div>
               {blog.slug && (
                 <Link
-                  href={`blog/${blog.slug.current}`}
+                  href={`/${blog.slug.current}`}
                   className="absolute inset-0"
                 >
                   <span className="sr-only">View</span>
